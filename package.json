@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/yojinlll/webpack-test/issues"
   },
-  "homepage": "https://github.com/yojinlll/webpack-test#readme"
+  "homepage": "https://github.com/yojinlll/webpack-test#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
 }
