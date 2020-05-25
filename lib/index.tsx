@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDom from "react-dom";
+import Button from "./button"
 
-const webpack:String = 'webpack'
-console.log('hi', webpack, React, ReactDom);
+ReactDom.render(<Button />, document.body)
