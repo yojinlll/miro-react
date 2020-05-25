@@ -19,6 +19,7 @@
   "homepage": "https://github.com/yojinlll/webpack-test#readme",
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
+    "html-webpack-plugin": "^4.3.0",
     "typescript": "^3.7.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
