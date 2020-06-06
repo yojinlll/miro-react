@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    'miro-react': './lib/index.tsx'
+    'index': './lib/index.tsx'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
