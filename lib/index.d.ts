@@ -1,1 +1,1 @@
-declare const webpack: String;
+export {};
