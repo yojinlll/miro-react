@@ -5,7 +5,7 @@
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js"
@@ -22,11 +22,18 @@
   },
   "homepage": "https://github.com/yojinlll/webpack-test#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "@types/jest": "^25.2.3",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-jest": "^26.0.1",
     "cross-env": "^7.0.2",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.0.1",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.1.0",
     "typescript": "^3.7.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
