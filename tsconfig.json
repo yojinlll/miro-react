@@ -22,7 +22,9 @@
     "esModuleInterop": true,
     "noUnusedLocals": true
   },
+  // 表示以下目录的文件都需要 tsconfig 去识别 
   "include": [
+    "lib/**/*"
   ],
   "exclude": [
     "node_modules",
