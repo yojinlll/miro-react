@@ -8,8 +8,10 @@ const fn: React.MouseEventHandler = (e) => {
 }
 
 ReactDom.render(<div>
-  <Icon name="github" onClick={ (e) => {
-    console.log(e.target, (e.target as SVGUseElement).href)
-  } }/>
+  <Icon name="github"
+    onClick={ fn }
+    onMouseEnter={ (e) => console.log('onMouse-Enter') }
+    onMouseLeave={ (e) => console.log('onMouse-Leave') }
+  />
   <Icon name="game" />
 </div>, document.body.querySelector('#app'))
