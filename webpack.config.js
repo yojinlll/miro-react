@@ -23,6 +23,11 @@ module.exports = {
         test: /\.svg$/,   // svg 都用该 loader 解析
         loader: 'svg-sprite-loader',
       },
+      // 解析 scss/sass 文件
+      {
+        test: /\.s([ac])ss$/,
+        use: ['style-loader', 'css-loader', "sass-loader"]
+      }
     ]
   }
 }
