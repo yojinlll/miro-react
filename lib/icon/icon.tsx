@@ -8,13 +8,13 @@ interface IconProps extends SVGAttributes<SVGElement> {
 }
 
 const Icon:React.FC<IconProps> = (props)=>{
-  const { className, ...restProps } = props
+  const { className, name, ...restProps } = props
   return (
     <svg
       className={ classes('icon', className) }
       { ...restProps }
     >
-      <use xlinkHref={`#${props.name}`} />
+      <use xlinkHref={`#${name}`} />
     </svg>
   )
 }
