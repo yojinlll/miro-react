@@ -9,6 +9,7 @@ const fn: React.MouseEventHandler = (e) => {
 
 ReactDom.render(<div>
   <Icon name="github"
+    className='icon-1 icon-2'
     onClick={ fn }
     onMouseEnter={ (e) => console.log('onMouse-Enter') }
     onMouseLeave={ (e) => console.log('onMouse-Leave') }
