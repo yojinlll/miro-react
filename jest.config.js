@@ -3,6 +3,9 @@ module.exports = {
   clearMocks: false,
   collectCoverage: false,
   reporters: ["default"],
+  collectCoverageFrom: ["lib/**/*.{ts,tsx}", "!**/node_modules/**"],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleDirectories: ['node_modules', 'include'],
   moduleNameMapper: {
