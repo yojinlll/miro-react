@@ -1,4 +1,7 @@
 #https://github.com/revolunet/create-react-app-circleci/blob/master/.circleci/config.yml
+
+# publish: 流程还需要在 circel ci 中添加 npm token， 目前先不加入这流程
+
 defaults: &defaults
   docker:
     - image: circleci/node:10.14.2
@@ -32,6 +35,9 @@ jobs:
           root: .
           paths:
             - dist
+            # - package.json
+            # - LICENSE
+            # - README.md
   test:
     <<: *defaults
     steps:
@@ -41,6 +47,13 @@ jobs:
       - run: yarn ci
       - store_test_results:
           path: test-results
+  # publish:
+  #   <<: *defaults
+  #   steps:
+  #     - attach_workspace:
+  #         at: .
+  #     - run: npm publish
+
 
 workflows:
   version: 2
@@ -53,3 +66,6 @@ workflows:
       - test:
           requires:
             - prepare
+      # - publish:
+      #     requires:
+      #       - build
