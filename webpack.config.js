@@ -1,12 +1,14 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
     'index': './lib/index.tsx'
   },
   resolve: {
-    extensions:['.ts', '.tsx', '.js', '.jsx']
+    extensions:['.ts', '.tsx', '.js', '.jsx'],
+    alias:{
+      '@lib': path.resolve(__dirname, 'lib/')
+    }
   },
   output: {
     path: path.resolve(__dirname, 'dist/lib'),

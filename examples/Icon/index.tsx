@@ -1,8 +1,12 @@
 import React from 'react'
+import Icon from '@lib/icon/icon'
+
 
 const IconExample: React.FC = () => {
   return (
-    <div>hi,icon</div>
+    <div>
+      <Icon name='github' />
+    </div>
   )
 }
 
