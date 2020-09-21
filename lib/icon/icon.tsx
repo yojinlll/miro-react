@@ -1,7 +1,9 @@
 import React, { SVGAttributes } from 'react'
 import '../svg/index.js'
 import './icon.scss'
-import classes from '../utils/classes'
+import classNameHandler from '../utils/classes'
+
+const ch = classNameHandler('icon')
 
 interface IconProps extends SVGAttributes<SVGElement> {
   name: string
@@ -11,7 +13,7 @@ const Icon:React.FC<IconProps> = (props)=>{
   const { className, name, ...restProps } = props
   return (
     <svg
-      className={ classes('icon', className) }
+      className={ ch('icon', [className]) }
       { ...restProps }
     >
       <use xlinkHref={`#${name}`} />

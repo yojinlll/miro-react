@@ -1,21 +1,23 @@
-import classes from '../classes'
+import classNameHandler from '../classes'
 
-describe('classes', ()=>{
-  it('第一个参数为组件名', ()=>{
-    const result = classes('test')
-    expect(result).toEqual('miro-test')
+// 确定组件名为 modal
+const ch = classNameHandler('modal')
+
+describe('classes - ch', ()=>{
+  it('与组件名同名', ()=>{
+    const result = ch('modal')
+    expect(result).toEqual('miro-modal')
   })
-  it('第二个参数为额外类名', ()=>{
-    const result = classes('test', 'boo yoo')
-    expect(result).toEqual('miro-test boo yoo')
+  it('与组件名不同名', ()=>{
+    const result = ch('title')
+    expect(result).toEqual('miro-modal-title')
   })
-  it('第二个参数可为假值，且不显示', ()=>{
-    const result = classes('test', undefined)
-    expect(result).toEqual('miro-test')
+  it('通过数组自定义类名', ()=>{
+    const result = ch('header', 'header-close', ['m-header'])
+    expect(result).toEqual('miro-modal-header miro-modal-header-close m-header')
   })
-  it('第三个参数可更改默认 key ', ()=>{
-    const result = classes('test', 'boo yoo', 'key')
-    expect(result).toEqual('key-test boo yoo')
+  it('传入假值', ()=>{
+    const result = ch('footer', undefined, 'footer-buttons', null, 0, [undefined, 'm-footer', null])
+    expect(result).toEqual('miro-modal-footer miro-modal-footer-buttons m-footer')
   })
-  
 }) 
