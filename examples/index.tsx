@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import IconExample from './icon'
 import ButtonExample from './button'
+import ModalExample from './modal'
 
 ReactDom.render((
   <Router>
@@ -23,6 +24,9 @@ ReactDom.render((
             <li>
               <Link to="/button">Button</Link>
             </li>
+            <li>
+              <Link to="/modal">modal</Link>
+            </li>
           </ul>
         </aside>
 
@@ -30,6 +34,7 @@ ReactDom.render((
           <Route path="/home"> home </Route>
           <Route path="/icon" component={ IconExample } />
           <Route path="/button" component={ ButtonExample } />
+          <Route path="/modal" component={ ModalExample } />
         </main>
       </div>
     </div>
