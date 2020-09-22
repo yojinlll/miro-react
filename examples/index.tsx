@@ -1,51 +1,51 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
-import { Layout, Header, Content, Footer, Aside } from "@lib/index";
-// import IconExample from "./icon";
+import { HashRouter as Router, Route, NavLink } from "react-router-dom";
+import "./index.scss"
+import { Layout, Header, Content, Aside, Icon } from "@lib/index";
+import IconExample from "./iconExample";
 import ButtonExample from "./button";
 import ModalExample from "./modal";
 import LayoutExample from "./layout";
+import './logo.svg'
 
 ReactDom.render(
   <Router>
     <div>
-      <Layout>
-        <Header>
-          <div className="logo">Miro-UI</div>
+      <Layout style={{ minHeight: '100vh'}}>
+        <Header className={'site-header'}>
+          <Icon name="logo" className={'logo'} />
+          <span>Miro-UI</span>
         </Header>
-        <Layout>
-          <Aside style={{border: '1px solid red'}}>
-            <h2>组件</h2>
+        <Layout className={'site-content-wrap'}>
+          <Aside className={'site-aside'}>
+            <h2>Components</h2>
             <ul>
               <li>
-                <Link to="/home">home</Link>
-              </li>
-              {/* <li>
-                <Link to="/icon">Icon</Link>
-              </li> */}
-              <li>
-                <Link to="/button">Button</Link>
+                <NavLink to="/home">home</NavLink>
               </li>
               <li>
-                <Link to="/modal">modal</Link>
+                <NavLink to="/icon">Icon</NavLink>
               </li>
               <li>
-                <Link to="/layout">layout</Link>
+                <NavLink to="/button">Button</NavLink>
+              </li>
+              <li>
+                <NavLink to="/modal">modal</NavLink>
+              </li>
+              <li>
+                <NavLink to="/layout">layout</NavLink>
               </li>
             </ul>
           </Aside>
-          <Content>
+          <Content className={'site-content'}>
             <Route path="/home"> home </Route>
-            {/* <Route path="/icon" component={IconExample} /> */}
+            <Route path="/icon" component={IconExample} />
             <Route path="/button" component={ButtonExample} />
             <Route path="/modal" component={ModalExample} />
             <Route path="/layout" component={LayoutExample} />
           </Content>
         </Layout>
-        <Footer>
-          footer
-        </Footer>
       </Layout>
     </div>
   </Router>,
