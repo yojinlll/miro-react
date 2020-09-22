@@ -1,5 +1,5 @@
 /dist/*
-/doc/*
+/docs/*
 /test-results/*
 # Logs
 logs

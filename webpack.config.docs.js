@@ -6,15 +6,15 @@ module.exports = Object.assign({}, base, {
   mode: 'production',
   entry: {
     ...base.entry,
-    'doc': './examples/index.tsx'
+    'docs': './examples/index.tsx'
   },
   output: {
-    path: path.resolve(__dirname, 'doc'),
+    path: path.resolve(__dirname, 'docs'),
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./examples/index.html",
-      filename: "doc.html"
+      filename: "docs.html"
     })
   ]
 })

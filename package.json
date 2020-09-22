@@ -13,7 +13,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --config webpack.config.dev.js",
     "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_DIR=./test-results/jest JEST_JUNIT_OUTPUT_NAME=results.xml jest --config=jest.config.ci.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "doc": "cross-env NODE_ENV=production webpack --config webpack.config.doc.js"
+    "docs": "cross-env NODE_ENV=production webpack --config webpack.config.docs.js"
   },
   "repository": {
     "type": "git",
