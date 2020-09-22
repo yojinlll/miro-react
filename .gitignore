@@ -1,7 +1,6 @@
 /dist/*
 /test-results/*
 /docs/*
-docs.sh
 
 # Logs
 logs
