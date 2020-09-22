@@ -1,6 +1,6 @@
 import classNameHandler from '../classes'
 
-// 确定组件名为 modal
+// 定义组件名为 modal
 const ch = classNameHandler('modal')
 
 describe('classes - ch', ()=>{

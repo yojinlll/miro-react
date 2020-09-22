@@ -9,12 +9,12 @@ export const classNameHandler = (componentName: string) => {
     const all = [className, ...args]
     all.forEach(i => {
       if(Array.isArray(i)){
-        Object.assign(concat1, i)
+        Object.assign(concat1, i.filter(Boolean))
       }else{
         i && concat2.push(componentName === i ? scoped : `${scoped}-${i}`)
       }
     })
-    return [...concat2, ...concat1.filter(Boolean)].join(' ')
+    return [...concat2, ...concat1].join(' ')
   }
 } 
 
