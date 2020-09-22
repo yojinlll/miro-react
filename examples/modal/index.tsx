@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Modal } from "@lib/index";
+import Codebox from "../utils/codebox/index"
+
+import ME1 from "./examples/modal.example.1"
 
 const ModalExample: React.FC = () => {
   const [x, setX] = useState(false);
@@ -17,19 +20,26 @@ const ModalExample: React.FC = () => {
 
   return (
     <Fragment>
-      <h1>example 1</h1>
-      <div>
-        <button onClick={() => setX(!x)}>button x</button>
-        <Modal
-          visible={x}
-          onCancel={xcloseModal}
-          title={"title x"}
-          mask={false}
-          className={'m-modal'}
-        >
-          <div>test</div>
-        </Modal>
-      </div>
+      <Codebox
+        codeString={ME1}
+        example={
+          <Fragment>
+            <button onClick={() => setX(!x)}>button x</button>
+            <Modal
+              visible={x}
+              onCancel={xcloseModal}
+              title={"title x"}
+              mask={false}
+              className={'m-modal'}
+            >
+              <div>test</div>
+            </Modal>
+          </Fragment>
+        }
+      >
+        <h1>Live demo</h1>
+        <p>{'A modal with header, body, and set of actions in the footer. Use <Modal/> in combination with other components to show or hide your Modal. The <Modal/> Component comes with a few convenient "sub components": <Modal.Header/>, <Modal.Title/>, <Modal.Body/>, and <Modal.Footer/>, which you can use to build the Modal content.'}</p>
+      </Codebox>
 
       <h1>example 2</h1>
       <div>
