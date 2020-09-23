@@ -7,7 +7,7 @@ import "./index.scss"
 
 interface props {
   codeString: string,
-  example: React.ReactNode
+  header: React.ReactNode
 }
 
 const Codebox: React.FC<props> = (props) => {
@@ -15,8 +15,8 @@ const Codebox: React.FC<props> = (props) => {
   SyntaxHighlighter.registerLanguage('javascript', javascript);
   return (
     <div className={'code-box-wrap'}>
-      {props.children}
-      <div className={'code-box-example'}>{props.example}</div>
+      {props.header}
+      <div className={'code-box-example'}>{props.children}</div>
       <SyntaxHighlighter className={'code-box-Highlighter'} language="jsx" style={tomorrow}>
         {props.codeString}
       </SyntaxHighlighter>

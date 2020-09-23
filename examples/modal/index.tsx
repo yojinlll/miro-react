@@ -22,23 +22,23 @@ const ModalExample: React.FC = () => {
     <Fragment>
       <Codebox
         codeString={ME1}
-        example={
+        header={
           <Fragment>
-            <button onClick={() => setX(!x)}>button x</button>
-            <Modal
-              visible={x}
-              onCancel={xcloseModal}
-              title={"title x"}
-              mask={false}
-              className={'m-modal'}
-            >
-              <div>test</div>
-            </Modal>
+            <h1>Live demo</h1>
+            <p>{'A modal with header, body, and set of actions in the footer. Use <Modal/> in combination with other components to show or hide your Modal. The <Modal/> Component comes with a few convenient "sub components": <Modal.Header/>, <Modal.Title/>, <Modal.Body/>, and <Modal.Footer/>, which you can use to build the Modal content.'}</p>
           </Fragment>
         }
       >
-        <h1>Live demo</h1>
-        <p>{'A modal with header, body, and set of actions in the footer. Use <Modal/> in combination with other components to show or hide your Modal. The <Modal/> Component comes with a few convenient "sub components": <Modal.Header/>, <Modal.Title/>, <Modal.Body/>, and <Modal.Footer/>, which you can use to build the Modal content.'}</p>
+        <button onClick={() => setX(!x)}>button x</button>
+        <Modal
+          visible={x}
+          onCancel={xcloseModal}
+          title={"title x"}
+          mask={false}
+          className={'m-modal'}
+        >
+          <div>test</div>
+        </Modal>
       </Codebox>
 
       <h1>example 2</h1>
