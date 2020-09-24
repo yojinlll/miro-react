@@ -7,6 +7,7 @@ import IconExample from "./iconExample";
 import ButtonExample from "./button";
 import ModalExample from "./modal";
 import LayoutExample from "./layout";
+import FormExample from "./form";
 import './logo.svg'
 
 ReactDom.render(
@@ -36,6 +37,9 @@ ReactDom.render(
               <li>
                 <NavLink to="/layout">layout</NavLink>
               </li>
+              <li>
+                <NavLink to="/form">form</NavLink>
+              </li>
             </ul>
           </Aside>
           <Content className={'site-content'}>
@@ -44,6 +48,7 @@ ReactDom.render(
             <Route path="/button" component={ButtonExample} />
             <Route path="/modal" component={ModalExample} />
             <Route path="/layout" component={LayoutExample} />
+            <Route path="/form" component={FormExample} />
           </Content>
         </Layout>
       </Layout>
