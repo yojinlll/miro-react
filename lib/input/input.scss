@@ -1,0 +1,15 @@
+.miro-input{
+  border: 1px solid #ced4da;
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  width: 100%;
+  transition: border-color .25s, box-shadow .25s;
+
+  &:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #b3d7ff;
+    outline: 0;
+    box-shadow: 0 0 0 2px #007bff40;
+  }
+}
