@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Form, FormValue, Validator } from "@lib/index";
+import { Form, FormValue, Validator, Button } from "@lib/index";
 import Codebox from "../utils/codebox/index";
 
 const FormExample: React.FC = () => {
@@ -25,27 +25,32 @@ const FormExample: React.FC = () => {
       }}
     }
     const errors = Validator(formData, rules)
-    setErrors(errors)
-    console.log('errors', errors);
-    console.log('ajax post:', formData);
+    if(Object.keys(errors).length){
+      console.log(errors);
+      setErrors(errors)
+    }else{
+      console.log('ajax post');
+    }
   };
 
   return (
     <div>
       <Codebox codeString={"code"} header={"form"}>
-        <Form
-          value={formData}
-          fields={fields}
-          onSubmit={onFormSubmit}
-          onChange={onFormDataChange}
-          errors={errors}
-          buttons={
-            <Fragment>
-              <button type={"submit"}>提交</button>
-              <button>返回</button>
-            </Fragment>
-          }
-        />
+        <div style={{maxWidth: 280}}>
+          <Form
+            value={formData}
+            fields={fields}
+            onChange={onFormDataChange}
+            onSubmit={onFormSubmit}
+            errors={errors}
+            footer={
+              <Fragment>
+                <Button type="submit" style={{marginRight: 20}}>提交</Button>
+                <Button type="reset" onClick={() => setErrors({})}>返回</Button>
+              </Fragment>
+            }
+          />
+        </div>
       </Codebox>
     </div>
   );

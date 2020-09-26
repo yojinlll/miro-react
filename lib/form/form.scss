@@ -1,0 +1,9 @@
+.miro-form{
+  &-tr:first-child &-td{ padding-top: 0; }
+  &-tr:last-child &-td{ padding-bottom: 0; }
+
+  &-tr &-td:first-child{
+    word-break: keep-all;
+    padding: 12px 12px 12px 0;
+  }
+}
