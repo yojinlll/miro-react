@@ -1,8 +1,9 @@
 import React from 'react'
+import { Button } from "@lib/index";
 
 const ButtonExample:React.FC = () => {
   return (
-    <div>hi,button</div>
+    <Button>button</Button>
   )
 }
 
