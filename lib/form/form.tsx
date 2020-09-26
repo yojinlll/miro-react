@@ -13,6 +13,7 @@ interface FormProps {
   buttons: React.ReactFragment
   onSubmit: React.FormEventHandler<HTMLFormElement>
   onChange: (value: FormValue) => void
+  errors: {[K: string]: string[]}
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -34,6 +35,7 @@ const Form: React.FC<FormProps> = (props) => {
           <div key={f.name}>
             { f.label }
             <input type={f.input.type} value={formValue[f.name]} onChange={onInputChange.bind(null, f.name)}/>
+            <span>{props.errors[f.name] && props.errors[f.name][0]}</span>
           </div>
           ) 
         })
@@ -44,3 +46,4 @@ const Form: React.FC<FormProps> = (props) => {
 };
 
 export default Form;
+export { default as Validator } from "./validator";
