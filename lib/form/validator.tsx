@@ -1,36 +1,41 @@
 import { FormValue } from "./form";
 
+type FormErrors  = {
+  [K: string]: string | undefined
+}
 interface FormRules {
   [K: string]: FormRule
 }
 interface FormRule {
   required?: boolean
-  message?: string,
-  validator?: (value: string | number) => string | undefined
+  message?: string
+  validator?: (value: string | number, callback: Function) => void
 }
 
-interface FormErrors {
-  [K: string]: string[]
-}
+export const Validator = (formValue: FormValue, rules: FormRules) => {
+  const promiseList = Object.entries(rules).map(i => {
+    return new Promise((resolve) => {
+      const key = i[0]
+      const rule = i[1]
+      const value = formValue[key]
 
-
-export const Validator = (formValue: FormValue, rules: FormRules): FormErrors => {
-  const errors: FormErrors = {}
-  Object.keys(rules).map(key => {
-    errors[key] = []
-    const value = formValue[key]
-    const rule = rules[key]
-
-    if(rule.required && !value){
-      errors[key].push(rule.message || 'required')
-    }
-    if(rule.validator){
-      const error = rule.validator(value)
-      error && errors[key].push(error)
-    }
+      if(rule.required && !value){
+        resolve({ [key]: rule.message || 'required' })
+      }else if(rule.validator){
+        rule.validator(value, (errorMsg: string) => resolve({ [key]: errorMsg }) )
+      }else{
+        resolve({ [key]: null })
+      }
+    })
   })
+  
+  return Promise.all(promiseList).then(values => {
+    const errors = values.reduce((pre,current:FormErrors)=>{
+      return Object.assign(pre, Object.values(current)[0] ? current : {} )
+    }, {}) as FormErrors
 
-  return errors
+    return errors
+  })
 };
 
 export default Validator;

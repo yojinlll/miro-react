@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Input } from "@lib/index";
 import classNameHandler from "../utils/classes";
 import "./form.scss"
@@ -9,9 +9,13 @@ export interface FormValue {
   [K: string]: any
 }
 
+export interface FormInput {
+  type: string
+}
+
 interface FormProps {
   value: FormValue;
-  fields: Array<{ name: string; label: string; input: { type: string } }>;
+  fields: Array<{ name: string; label: string; input: FormInput | React.ReactFragment }>;
   footer: React.ReactFragment
   onSubmit: React.FormEventHandler<HTMLFormElement>
   onChange: (value: FormValue) => void
@@ -31,20 +35,31 @@ const Form: React.FC<FormProps> = (props) => {
 
   return (
     <form className={ch("form")} onSubmit={onSubmit}>
-      <table>
+      <table className={ch('table')}>
         <tbody>
           {
             props.fields.map(f => {
               return (
-                <tr className={ch("tr")} key={f.name}>
-                  <td className={ch("td")}>
-                    <label className={ch('label')}>{ f.label }</label>
-                  </td>
-                  <td className={ch("td")}>
-                    <Input type={f.input.type} value={formValue[f.name]} onChange={onInputChange.bind(null, f.name)}/>
-                    <span>{props.errors[f.name] && props.errors[f.name][0]}</span>
-                  </td>
-                </tr>
+                <Fragment key={f.name}>
+                  <tr className={ch("tr")}>
+                    <td className={ch("td")}>
+                      <label className={ch('label')}>{ f.label }</label>
+                    </td>
+                    <td className={ch("td")}>
+                      {
+                        React.isValidElement(f.input)
+                          ? f.input
+                          : <Input type={(f.input as FormInput).type} value={formValue[f.name]} onChange={onInputChange.bind(null, f.name)}/>
+                      }
+                    </td>
+                  </tr>
+                  <tr className={ch("tr")}>
+                    <td/>
+                    <td>
+                      <div className={ch('td-error')}>{ props.errors[f.name] }</div>
+                    </td>
+                  </tr>
+                </Fragment>
               ) 
             })
           }

@@ -1,9 +1,21 @@
 .miro-form{
+  &-table{
+    border-collapse: collapse;
+  }
+  &-td{
+    // border: 1px solid red;
+  }
+
   &-tr:first-child &-td{ padding-top: 0; }
   &-tr:last-child &-td{ padding-bottom: 0; }
 
   &-tr &-td:first-child{
     word-break: keep-all;
-    padding: 12px 12px 12px 0;
+    padding-right: 12px;
+  }
+  &-td-error{
+    font-size: .8em;
+    min-height: 2em;
+    color: #f56c6c;
   }
 }

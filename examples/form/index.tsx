@@ -2,33 +2,67 @@ import React, { Fragment, useState } from "react";
 import { Form, FormValue, Validator, Button } from "@lib/index";
 import Codebox from "../utils/codebox/index";
 
+const nameStorage = ['bobo', 'mimi', 'jojo']
+
+const formRules = {
+  username: {
+    required: true, message: '必填项',
+    validator:(value: string, callback: Function)=>{
+      // setTimeout(()=>{
+        if(value.length > 10){
+          callback('name max')
+        }else if(value.length < 3){
+          callback('name min')
+        }else if(nameStorage.includes(value)){
+          callback('name is exist')
+        }else{
+          callback()
+        }
+      // }, 2000)
+    }
+  },
+  password: {
+    required: true, message: '必填项',
+    validator:(value: string, callback: Function)=>{
+      setTimeout(()=>{
+        if(value.length > 10){
+          callback('password max')
+        }else if(value.length < 3){
+          callback('password min')
+        }else{
+          callback()
+        }
+      }, 2000)
+    }
+  }
+}
+
+
 const FormExample: React.FC = () => {
   const [formData, setFormDate] = useState<FormValue>({
     username: "",
     password: "",
   });
   const [fields] = useState([
-    { name: "username", label: "用户名", input: { type: "text" } },
+    { name: "username", label: "用户名", input: {type: 'text'} },
     { name: "password", label: "密码", input: { type: "text" } },
   ]);
   const [errors, setErrors] = useState({});
 
-  const onFormDataChange = (newValue: FormValue) => {
+  const onFormDataChange = async (newValue: FormValue) => {
     setFormDate(newValue)
+    // const errors = await Validator(formData, formRules)
+    // setErrors(errors)
+    // console.log(errors);
   };
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    const rules = {
-      username: {required: true, message: '必填项', validator:(value: string)=>{
-        if(value.length > 10) return 'name max'
-        if(value.length < 3) return 'name min'
-        return
-      }}
-    }
-    const errors = Validator(formData, rules)
-    if(Object.keys(errors).length){
-      console.log(errors);
-      setErrors(errors)
-    }else{
+  const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
+    const errors = await Validator(formData, formRules)
+    setErrors(errors)
+    console.log('get errors', errors);
+    
+
+    if(!Object.keys(errors).length){
       console.log('ajax post');
     }
   };
