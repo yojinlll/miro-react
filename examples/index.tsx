@@ -9,6 +9,7 @@ import ModalExample from "./modal";
 import LayoutExample from "./layout";
 import FormExample from "./form";
 import InputExample from "./input";
+import TreeExample from "./tree";
 import './logo.svg'
 
 ReactDom.render(
@@ -24,36 +25,40 @@ ReactDom.render(
             <h2>Components</h2>
             <ul>
               <li>
-                <NavLink to="/home">home</NavLink>
+                <NavLink to="/home">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/button">button</NavLink>
+                <NavLink to="/button">Button</NavLink>
               </li>
               <li>
                 <NavLink to="/icon">Icon</NavLink>
               </li>
               <li>
-                <NavLink to="/modal">modal</NavLink>
+                <NavLink to="/modal">Modal</NavLink>
               </li>
               <li>
-                <NavLink to="/layout">layout</NavLink>
+                <NavLink to="/layout">Layout</NavLink>
               </li>
               <li>
-                <NavLink to="/form">form</NavLink>
+                <NavLink to="/form">Form</NavLink>
               </li>
               <li>
-                <NavLink to="/input">input</NavLink>
+                <NavLink to="/input">Input</NavLink>
+              </li>
+              <li>
+                <NavLink to="/tree">Tree</NavLink>
               </li>
             </ul>
           </Aside>
           <Content className={'site-content'}>
-            <Route path="/home"> home </Route>
+            <Route path="/home"> Home </Route>
             <Route path="/button" component={ButtonExample} />
             <Route path="/icon" component={IconExample} />
             <Route path="/modal" component={ModalExample} />
             <Route path="/layout" component={LayoutExample} />
             <Route path="/form" component={FormExample} />
             <Route path="/input" component={InputExample} />
+            <Route path="/tree" component={TreeExample} />
           </Content>
         </Layout>
       </Layout>

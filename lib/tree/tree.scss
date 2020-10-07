@@ -1,0 +1,13 @@
+.miro-tree{
+  &-checkbox{
+    cursor: pointer;
+    margin-right: 4px;
+  }
+  &-label{
+    border: 1px solid #c0c0ff;
+    cursor: pointer;
+    &:hover{
+      background-color: #ffcdcd;
+    }
+  }
+}
