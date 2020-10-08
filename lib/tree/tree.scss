@@ -3,11 +3,30 @@
     cursor: pointer;
     margin-right: 4px;
   }
-  &-label{
-    border: 1px solid #c0c0ff;
+  &-icon{
+    // position: absolute;
+    display: inline-block;
+    width: 14px;
+    left: -16px;
     cursor: pointer;
-    &:hover{
-      background-color: #ffcdcd;
+
+    &-wrap{
+      width: 18px;
     }
+  }
+  &-item{
+    
+    &-inner{
+      display: flex;
+      &:hover{
+        background-color: #ffcdcd;
+      }
+    }
+    &-label{ cursor: pointer; }
+  }
+
+  &-children-expanded{
+    height: 0;
+    overflow: hidden;
   }
 }

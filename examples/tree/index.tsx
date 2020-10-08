@@ -13,7 +13,13 @@ const TreeExample:React.FC = () => {
           text: '1.3', value: '1.3',
           children: [
             { text: '1.3.1', value: '1.2.1' },
-            { text: '1.3.2', value: '1.3.2' },
+            {
+              text: '1.3.2', value: '1.3.2',
+              children: [
+                { text: '1.3.2.1', value: '1.3.2.1' },
+                { text: '1.3.2.2', value: '1.3.2.2' },
+              ]
+            },
           ]
         }
       ]
