@@ -26,7 +26,8 @@
   }
 
   &-children-expanded{
-    height: 0;
-    overflow: hidden;
+    display: none;
+    // height: 0;
+    // overflow: hidden;
   }
 }
