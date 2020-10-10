@@ -25,9 +25,9 @@
     &-label{ cursor: pointer; }
   }
 
-  &-children-expanded{
-    display: none;
-    // height: 0;
-    // overflow: hidden;
+  &-children-collapse{
+    // display: none;
+    height: 0;
+    overflow: hidden;
   }
 }

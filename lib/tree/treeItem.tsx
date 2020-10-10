@@ -3,6 +3,17 @@ import classNameHandler from "../utils/classes";
 
 const ch = classNameHandler("tree");
 
+interface RecursiveArray<T> extends Array<T | RecursiveArray<T> | []> {}
+
+function flatten(array: RecursiveArray<string>): any{
+  return array.reduce<string[]>((result, current) => 
+    result.concat(Array.isArray(current) ? flatten(current) : current ), [])
+}
+
+function collectChlidrenValues(item: TreeDataItem): string[] {
+  return flatten(item.children ? item.children.map(i => [i.value, collectChlidrenValues(i)]) : [])
+}
+
 const treeItemStyle = {
   paddingLeft:(lv: number) => { return { paddingLeft: `${lv * 16}px` } }
 }
@@ -19,8 +30,8 @@ const TreeItem: React.FC<TreeItemProps> = (props) => {
             item.children &&
               <Fragment>{
                 expanded
-                  ? <span className={ch('icon')} onClick={()=>{ setExpanded(false) }}>+</span>
-                  : <span className={ch('icon')} onClick={()=>{ setExpanded(true) }}>-</span>
+                  ? <span className={ch('icon')} onClick={()=>{ setExpanded(false) }}>-</span>
+                  : <span className={ch('icon')} onClick={()=>{ setExpanded(true) }}>+</span>
               }</Fragment>
           }
         </div>
@@ -32,8 +43,8 @@ const TreeItem: React.FC<TreeItemProps> = (props) => {
             onChange={(e) => {
               if(treeProps.multiple){
                 e.target.checked
-                ? setSelect([...selected, item.value])
-                : setSelect(selected.filter((v) => v !== item.value));
+                  ? setSelect([...selected, item.value, ...collectChlidrenValues(item)])
+                  : setSelect(selected.filter((v) => v !== item.value && !collectChlidrenValues(item).includes(v)));
               }else{
                 e.target.checked ? setSelect([item.value]) : setSelect([]);
               }
@@ -42,7 +53,7 @@ const TreeItem: React.FC<TreeItemProps> = (props) => {
           <span>{item.text}</span>
         </label>
       </div>
-      <div className={ch('children', expanded && 'children-expanded')}>
+      <div className={ch('children', !expanded && 'children-collapse')}>
         {item.children?.map((childrenItem) => {
           return <TreeItem
             item={childrenItem}
