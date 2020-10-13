@@ -14,10 +14,11 @@ const Tree: React.FC<TreeProps> = (props) => {
           return (
           <TreeItem
             item={item}
-            selected={selected}
+            selected={(selected as string[])}
             setSelect={setSelect}
             treeProps={props}
             level={0}
+            onItemChange={ (values: string[]) => setSelect(values) }
             key={item.value}
           />
         );
@@ -28,6 +29,7 @@ const Tree: React.FC<TreeProps> = (props) => {
 
 Tree.defaultProps = {
   multiple: true,
+  selected: []
 };
 
 export default Tree;
