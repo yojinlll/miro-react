@@ -51,14 +51,16 @@ ReactDom.render(
             </ul>
           </Aside>
           <Content className={'site-content'}>
-            <Route path="/home"> Home </Route>
-            <Route path="/button" component={ButtonExample} />
-            <Route path="/icon" component={IconExample} />
-            <Route path="/modal" component={ModalExample} />
-            <Route path="/layout" component={LayoutExample} />
-            <Route path="/form" component={FormExample} />
-            <Route path="/input" component={InputExample} />
-            <Route path="/tree" component={TreeExample} />
+            <div className={'site-content-inner'}>
+              <Route path="/home"> Home </Route>
+              <Route path="/button" component={ButtonExample} />
+              <Route path="/icon" component={IconExample} />
+              <Route path="/modal" component={ModalExample} />
+              <Route path="/layout" component={LayoutExample} />
+              <Route path="/form" component={FormExample} />
+              <Route path="/input" component={InputExample} />
+              <Route path="/tree" component={TreeExample} />
+            </div>
           </Content>
         </Layout>
       </Layout>

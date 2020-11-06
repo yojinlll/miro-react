@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Modal } from "@lib/index";
 import Codebox from "../utils/codebox/index"
 
-import ME1 from "./examples/modal.example.1"
+import ME1 from "./codeExamples/modal.1"
 
 const ModalExample: React.FC = () => {
   const [x, setX] = useState(false);

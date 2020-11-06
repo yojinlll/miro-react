@@ -18,3 +18,10 @@ $radius: 8px;
     margin-bottom: 40px;
   }
 }
+
+@media (max-width: 767px){
+  .code-box-content{
+    min-width: 280px;
+    width: calc(100vw - 4rem);
+  }
+}

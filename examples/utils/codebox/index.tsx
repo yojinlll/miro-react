@@ -17,9 +17,11 @@ const Codebox: React.FC<props> = (props) => {
     <div className={'code-box-wrap'}>
       {props.header}
       <div className={'code-box-example'}>{props.children}</div>
-      <SyntaxHighlighter className={'code-box-Highlighter'} language="jsx" style={tomorrow}>
-        {props.codeString}
-      </SyntaxHighlighter>
+      <div className={'code-box-content'}>
+        <SyntaxHighlighter className={'code-box-Highlighter'} language="jsx" style={tomorrow}>
+          {props.codeString}
+        </SyntaxHighlighter>
+      </div>
     </div>
   );
 };
