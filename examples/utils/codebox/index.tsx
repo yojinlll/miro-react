@@ -6,7 +6,7 @@ import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javasc
 import "./index.scss"
 
 interface props {
-  codeString: string,
+  codeString?: string,
   header: React.ReactNode
 }
 
@@ -17,11 +17,13 @@ const Codebox: React.FC<props> = (props) => {
     <div className={'code-box-wrap'}>
       {props.header}
       <div className={'code-box-example'}>{props.children}</div>
-      <div className={'code-box-content'}>
-        <SyntaxHighlighter className={'code-box-Highlighter'} language="jsx" style={tomorrow}>
-          {props.codeString}
-        </SyntaxHighlighter>
-      </div>
+      {
+        props.codeString && <div className={'code-box-content'}>
+          <SyntaxHighlighter className={'code-box-Highlighter'} language="jsx" style={tomorrow}>
+            {props.codeString}
+          </SyntaxHighlighter>
+        </div>
+      }
     </div>
   );
 };

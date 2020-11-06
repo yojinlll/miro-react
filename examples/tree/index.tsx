@@ -36,11 +36,11 @@ const TreeExample:React.FC = () => {
 
   return (
     <Fragment>
-      <div style={{width: '60%'}}>
-        <Codebox codeString={"code"} header={"展示数据"}>
+      <Codebox codeString={"code"} header={"展示数据"}>
+        <div style={{width: '60%'}}>
           <Tree treeData={array} selected={[]}/>
-        </Codebox>
-      </div>
+        </div>
+      </Codebox>
     </Fragment>
   )
 }

@@ -5,26 +5,44 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 li{ list-style: none; }
 a{ text-decoration: none; color: inherit; }
 
+.flex-a-c{
+  display: flex;
+  align-items: center;
+}
+
 .site{
   &-header{
     color: #fff;
     background-color: #20232a;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 4em;
     color: #8cc5f1;
+    padding: 0 20px;
   
     .logo{
       height: 2em;
-      margin: 0 6px 0 20px;
+      margin-right: 6px;
     }
-  }
-  &-content-wrap{
-    margin-top: 4em;
+
+    .menu-wrap{ display: none; cursor: pointer; padding: 20px 0; }
+    .menu{
+      height: 4px;
+      width: 24px;
+      background-color: #8cc5f1;
+
+      &::after, &::before{
+        display: block;
+        content: '';
+        height: 4px;
+        width: 24px;
+        background-color: #8cc5f1;
+      }
+      &::after{ transform: translateY(4px) }
+      &::before{ transform: translateY(-8px) }
+    }
   }
   &-aside{
     background-color: #f7f7f7;
@@ -35,30 +53,69 @@ a{ text-decoration: none; color: inherit; }
     color: #1a1a1abf;
     
     h2{ color: #1a1a1a; font-size: 1em; }
-    
-    ul > li {
-      margin: 6px 0;
-      font-size: 90%;
-      
-      a{
-        transition: all .2s ease-out;
-        &.active{
-          font-weight: 600;
-          color: #1a1a1a;
-        }
-      }
-      
-      &:hover{
-        transition: all .2s ease-out;
-        color: #1a1a1a7e;
-      }
-    }
-  }
-  &-content{
-    padding: 2rem 2rem;
   }
   &-content-inner{
+    padding: 2em 4em;
     max-width: 1200px;
+  }
+}
+
+ul > li {
+  margin: 6px 0;
+  font-size: 90%;
+  
+  a{
+    transition: all .2s ease-out;
+    &.active{
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+  }
+  
+  &:hover{
+    transition: all .2s ease-out;
+    color: #1a1a1a7e;
+  }
+}
+
+.mobile-nav{
+  height: 0;
+  padding: 0 12px;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  transition: height .25s cubic-bezier(.77,0,.175,1);
+  
+  &.active{
+    height: 240px;
+  }
+}
+
+@media (max-width: 767px){
+  .api-wrap{
+    width: calc(100vw - 2rem);
+    overflow: auto;
+  }
+  .site-header .menu-wrap{
+    display: block;
+  }
+  .site-content-inner{
+    padding: 1em;
+  }
+}
+.api-table{
+  margin: 24px 0 48px;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  min-width: 500px;
+
+  th,td{
+    border: 1px solid #dee2e6;
+    padding: 1em;
+    vertical-align: top;
+  }
+  th:last-child{
+    width: 450px;
   }
 }
 

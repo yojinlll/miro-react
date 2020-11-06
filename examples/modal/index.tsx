@@ -6,17 +6,17 @@ import ME1 from "./codeExamples/modal.1"
 
 const ModalExample: React.FC = () => {
   const [x, setX] = useState(false);
-  const [y, setY] = useState(false);
-  const [z, setZ] = useState(false);
+  // const [y, setY] = useState(false);
+  // const [z, setZ] = useState(false);
   const xcloseModal = (e: any) => {
     setX(false);
   };
-  const ycloseModal = (e: any) => {
-    setY(false);
-  };
-  const zcloseModal = (e: any) => {
-    setZ(false);
-  };
+  // const ycloseModal = (e: any) => {
+  //   setY(false);
+  // };
+  // const zcloseModal = (e: any) => {
+  //   setZ(false);
+  // };
 
   return (
     <Fragment>
@@ -41,7 +41,7 @@ const ModalExample: React.FC = () => {
         </Modal>
       </Codebox>
 
-      <h1>example 2</h1>
+      {/* <h1>example 2</h1>
       <div>
         <button onClick={() => setY(!y)}>button y</button>
         <Modal
@@ -68,6 +68,40 @@ const ModalExample: React.FC = () => {
           }
           style={{ border: "4px solid #f07171", background: "#d1d1fb" }}
         />
+      </div> */}
+
+      <h1>API</h1>
+      <div className="api-wrap">
+        <table className="api-table">
+          <thead>
+            <tr>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>closeLabel</td>
+              <td>string</td>
+              <td>'Close alert'	</td>
+              <td>Renders a properly aligned dismiss button, as well as adding extra horizontal padding to the Alert.</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </Fragment>
   );

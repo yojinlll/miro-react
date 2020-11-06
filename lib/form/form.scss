@@ -2,9 +2,6 @@
   &-table{
     border-collapse: collapse;
   }
-  &-td{
-    // border: 1px solid red;
-  }
 
   &-tr:first-child &-td{ padding-top: 0; }
   &-tr:last-child &-td{ padding-bottom: 0; }
