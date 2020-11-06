@@ -39,7 +39,7 @@ const formRules = {
 
 
 const FormExample: React.FC = () => {
-  const [formData, setFormDate] = useState<FormValue>({
+  const [formData, setFormData] = useState<FormValue>({
     username: "",
     password: "",
   });
@@ -50,10 +50,10 @@ const FormExample: React.FC = () => {
   const [errors, setErrors] = useState({});
 
   const onFormDataChange = async (newValue: FormValue) => {
-    setFormDate(newValue)
+    setFormData(newValue)
     // const errors = await Validator(formData, formRules)
     // setErrors(errors)
-    // console.log(errors);
+    console.log('errors');
   };
   const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 

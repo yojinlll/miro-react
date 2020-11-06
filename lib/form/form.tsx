@@ -15,7 +15,7 @@ export interface FormInput {
 
 interface FormProps {
   value: FormValue;
-  fields: Array<{ name: string; label: string; input: FormInput | React.ReactFragment }>;
+  fields: Array<{ name: string; label: string; input: FormInput | React.ReactChild }>;
   footer: React.ReactFragment
   onSubmit: React.FormEventHandler<HTMLFormElement>
   onChange: (value: FormValue) => void
