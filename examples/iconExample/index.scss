@@ -1,0 +1,23 @@
+@media (max-width: 767px){
+  .icon-table-wrap{
+    width: calc(100vw - 2rem);
+    overflow: auto;
+  }
+}
+.icon-table{
+  margin: 24px 0 48px;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+
+  td{
+    border: 1px solid #dee2e6;
+    padding: 1em;
+    vertical-align: top;
+
+    div{
+      font-size: 12px;
+      color: #1a1a1abf;
+    }
+  }
+}
