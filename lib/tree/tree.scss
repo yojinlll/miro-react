@@ -18,9 +18,6 @@
     
     &-inner{
       display: flex;
-      &:hover{
-        // background-color: #ffcdcd;
-      }
     }
     &-label{ cursor: pointer; }
   }
@@ -31,3 +28,51 @@
     overflow: hidden;
   }
 }
+
+// checkbox 样式例子
+// input[type="checkbox"] {
+//   width: 20px;
+//   height: 20px;
+//   display: inline-block;
+//   text-align: center;
+//   vertical-align: middle;
+//   line-height: 18px;
+//   margin-right: 10px;
+//   position: relative;
+// }
+
+// input[type="checkbox"]::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   background-color: #fff;
+//   width: 100%;
+//   height: 100%;
+//   border: 1px solid #d9d9d9;
+// }
+
+// input[type="checkbox"]:indeterminate::before {
+//   content: "";
+//   background-color: red;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   border: 1px solid #7D7D7D;
+//   color: #7D7D7D;
+//   font-size: 20px;
+//   font-weight: bold;
+// }
+// input[type="checkbox"]:checked::before {
+//   content: "";
+//   background-color: blue;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   border: 1px solid #7D7D7D;
+//   color: #7D7D7D;
+//   font-size: 20px;
+//   font-weight: bold;
+// }

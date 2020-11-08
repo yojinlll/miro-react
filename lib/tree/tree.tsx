@@ -28,8 +28,10 @@ const Tree: React.FC<TreeProps> = (props) => {
 };
 
 Tree.defaultProps = {
-  multiple: true,
-  selected: []
+  selected: [],
+  multiple: false,
+  checkable: false,
+  expanded: true,
 };
 
 export default Tree;

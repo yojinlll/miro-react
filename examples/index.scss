@@ -4,6 +4,7 @@
 h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 li{ list-style: none; }
 a{ text-decoration: none; color: inherit; }
+p{ margin: 1em 0; }
 
 .flex-a-c{
   display: flex;
@@ -114,9 +115,8 @@ ul > li {
     padding: 1em;
     vertical-align: top;
   }
-  th:last-child{
-    width: 450px;
-  }
+  th{ word-break: keep-all; }
+  td{ font-size: 14px; }
 }
 
 @media (max-width: 767px){

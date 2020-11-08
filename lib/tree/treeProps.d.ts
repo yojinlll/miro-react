@@ -8,6 +8,8 @@ interface TreeProps {
   treeData: TreeDataItem[];
   selected?: string[];
   multiple?: boolean;
+  checkable?: boolean;
+  expanded?: boolean;
 }
 interface TreeItemProps {
   treeProps: TreeProps;

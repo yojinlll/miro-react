@@ -1,17 +1,20 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
 import classNameHandler from "../utils/classes";
+import { Icon } from "@lib/index";
 
 const ch = classNameHandler("tree");
+const checkboxCh = classNameHandler("checkbox");
 
 interface RecursiveArray<T> extends Array<T | RecursiveArray<T> | []> {}
 
 const treeItemStyle = {
-  paddingLeft:(lv: number) => { return { paddingLeft: `${lv * 16}px` } }
+  paddingLeft:(lv: number) => { return { paddingLeft: `${lv * 16}px` } },
+  expandIcon: {width: 10, paddingBottom: 1}
 }
 
 const TreeItem: React.FC<TreeItemProps> = (props) => {
   const {treeProps, item, level, selected, setSelect } = props
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(treeProps.expanded);
   const inputRef = useRef<HTMLInputElement>(null)
 
   // 递归的 treeItem 调用
@@ -23,13 +26,37 @@ const TreeItem: React.FC<TreeItemProps> = (props) => {
      * common交集与 childrenValues 相同长度，表示上级 checkbo 应为 全选
      */
     if (common.length !== 0) {
+      if(common.length === childrenValues.length){
+        inputRef.current?.classList.remove(checkboxCh('indeterminate'))
+        inputRef.current?.classList.add(checkboxCh('checked'))
+      }else{
+        inputRef.current?.classList.remove(checkboxCh('checked'))
+        inputRef.current?.classList.add(checkboxCh('indeterminate'))
+      }
+
       inputRef.current!.indeterminate = common.length !== childrenValues.length
       props.onItemChange(Array.from(new Set(values.concat(item.value))))
     }else{
+      inputRef.current?.classList.remove(checkboxCh('indeterminate'))
+      inputRef.current?.classList.remove(checkboxCh('checked'))
+
       inputRef.current!.indeterminate = false
       props.onItemChange(values.filter((i: string) => i !== item.value))
     }
   }
+
+  useEffect(() => {
+    treeProps.multiple && treeProps.checkable && onItemChange(treeProps.selected)
+  }, [])
+  
+  useEffect(() => {
+    if(selected.includes(item.value)){
+      !(inputRef.current?.classList.contains(checkboxCh('indeterminate')))
+        && inputRef.current?.classList.add(checkboxCh('checked'))
+    }else{
+      inputRef.current?.classList.remove(checkboxCh('checked'))
+    }
+  }, [selected])
 
 
   return (
@@ -40,31 +67,37 @@ const TreeItem: React.FC<TreeItemProps> = (props) => {
             item.children &&
               <Fragment>{
                 expanded
-                  ? <span className={ch('icon')} onClick={()=>{ setExpanded(false) }}>-</span>
-                  : <span className={ch('icon')} onClick={()=>{ setExpanded(true) }}>+</span>
+                  ? <span className={ch('icon')} onClick={()=>{ setExpanded(false) }}>
+                    <Icon name="arrow-down" style={treeItemStyle.expandIcon} />
+                  </span>
+                  : <span className={ch('icon')} onClick={()=>{ setExpanded(true) }}>
+                    <Icon name="arrow-right" style={treeItemStyle.expandIcon} />
+                  </span>
               }</Fragment>
           }
         </div>
-        <label className={ch("item-label")}>
-          <input
-            ref={inputRef}
-            className={ch("checkbox")}
-            type="checkbox"
-            checked={selected.includes(item.value)}
-            onChange={(e) => {
-              if(treeProps.multiple){
-                e.target.checked
-                  ? props.onItemChange([...selected, item.value, ...collectChlidrenValues(item)])
-                  : props.onItemChange(selected.filter((v) => v !== item.value && !collectChlidrenValues(item).includes(v)));
-              }else{
-                e.target.checked ? setSelect([item.value]) : setSelect([]);
-              }
-            }}
-          />
-          <span onClick={()=>{
-            console.log('item', item);
-          }}>{item.text}</span>
-        </label>
+        {
+          treeProps.checkable
+            ? <label className={ch("item-label")}>
+              <input
+                ref={inputRef}
+                className={ch("checkbox")}
+                type="checkbox"
+                checked={selected.includes(item.value)}
+                onChange={(e) => {
+                  if(treeProps.multiple){
+                    e.target.checked
+                      ? props.onItemChange([...selected, item.value, ...collectChlidrenValues(item)])
+                      : props.onItemChange(selected.filter((v) => v !== item.value && !collectChlidrenValues(item).includes(v)));
+                  }else{
+                    e.target.checked ? setSelect([item.value]) : setSelect([]);
+                  }
+                }}
+              />
+              <span>{item.text}</span>
+            </label>
+            : <span>{item.text}</span> 
+        }
       </div>
       {
         item.children &&
