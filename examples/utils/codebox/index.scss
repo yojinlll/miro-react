@@ -6,7 +6,13 @@ $radius: 8px;
     margin-top: 20px;
     border: 2px solid #ececec;
     padding: 1em;
-    border-radius: $radius $radius 0 0;
+    padding-bottom: 0;
+    &.active-code{
+      border-radius: $radius $radius 0 0;
+    }
+    &.unactive-code{
+      border-radius: $radius;
+    }
   }
 
   &-Highlighter{
@@ -17,6 +23,14 @@ $radius: 8px;
   &-wrap{
     margin-bottom: 80px;
   }
+}
+
+.code-toggle{
+  margin: 32px 0 6px;
+  font-size: 14px;
+  color: #329ff3;
+  text-align: center;
+  cursor: pointer;
 }
 
 @media (max-width: 767px){
