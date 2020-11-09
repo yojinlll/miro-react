@@ -19,7 +19,7 @@ interface FormProps {
   footer: React.ReactFragment
   onSubmit: React.FormEventHandler<HTMLFormElement>
   onChange: (value: FormValue) => void
-  errors: {[K: string]: string[]}
+  errors?: {[K: string]: string[]}
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -56,7 +56,7 @@ const Form: React.FC<FormProps> = (props) => {
                   <tr className={ch("tr")}>
                     <td/>
                     <td>
-                      <div className={ch('td-error')}>{ props.errors[f.name] }</div>
+                      <div className={ch('td-error')}>{ props.errors && props.errors[f.name] }</div>
                     </td>
                   </tr>
                 </Fragment>
