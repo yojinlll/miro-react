@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 import { HashRouter as Router, Route, NavLink, useLocation } from "react-router-dom";
 import "./index.scss"
 import { Layout, Header, Content, Aside, Icon } from "@lib/index";
+import Guide from "./guide";
 import IconExample from "./iconExample";
 import ButtonExample from "./button";
 import ModalExample from "./modal";
@@ -27,7 +28,7 @@ const Nav: React.FC<NavProps> = (props) => {
   return (
     <ul className={props.className}>
       <li>
-        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/guide">快速上手</NavLink>
       </li>
       <li>
         <NavLink to="/button">Button</NavLink>
@@ -84,7 +85,7 @@ const Page: React.FC = () => {
                 <Nav jumpHandle={setNavToggle} />
               </div>
               <div className={'site-content-inner'}>
-                <Route path="/home"> Home </Route>
+                <Route path="/guide" component={Guide} />
                 <Route path="/button" component={ButtonExample} />
                 <Route path="/icon" component={IconExample} />
                 <Route path="/modal" component={ModalExample} />

@@ -1,0 +1,17 @@
+.guide{
+  padding-bottom: 120px;
+
+  .code-content{
+    border-radius: 6px;
+  }
+  h3{
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 767px){
+  .guide .code-wrap {
+    min-width: 280px;
+    width: calc(100vw - 2rem);
+  }
+}
