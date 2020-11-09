@@ -75,10 +75,10 @@ const ModalExample: React.FC = () => {
         <table className="api-table">
           <thead>
             <tr>
-              <th>1</th>
-              <th>2</th>
-              <th>3</th>
-              <th>4</th>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>默认值</th>
             </tr>
           </thead>
           <tbody>

@@ -37,10 +37,10 @@ const Nav: React.FC<{jumpHandle: React.Dispatch<React.SetStateAction<Boolean>>}>
         <NavLink to="/layout">Layout</NavLink>
       </li>
       <li>
-        <NavLink to="/form">Form</NavLink>
+        <NavLink to="/input">Input</NavLink>
       </li>
       <li>
-        <NavLink to="/input">Input</NavLink>
+        <NavLink to="/form">Form</NavLink>
       </li>
       <li>
         <NavLink to="/tree">Tree</NavLink>
@@ -84,8 +84,8 @@ const Page: React.FC = () => {
                 <Route path="/icon" component={IconExample} />
                 <Route path="/modal" component={ModalExample} />
                 <Route path="/layout" component={LayoutExample} />
-                <Route path="/form" component={FormExample} />
                 <Route path="/input" component={InputExample} />
+                <Route path="/form" component={FormExample} />
                 <Route path="/tree" component={TreeExample} />
               </div>
             </Content>
