@@ -119,7 +119,7 @@ const TreeExample:React.FC = () => {
             </tr>
             <tr>
               <td>onChange</td>
-              <td>更新节点信息的方法</td>
+              <td>更新当前选中节点</td>
               <td>{'( values: String[] ) => void'}</td>
               <td>-</td>
             </tr>

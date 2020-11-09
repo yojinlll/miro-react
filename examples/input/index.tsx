@@ -28,8 +28,10 @@ const InputExample:React.FC = () => {
           </Fragment>
         }
       >
-        <p>value: {value}</p>
-        <Input className="code-demo" value={value} onChange={(e)=>{setValue(e.target.value)}} />
+        <div style={{ width: 240 }}>
+          <p>value: {value}</p>
+          <Input className="code-demo" value={value} onChange={(e)=>{setValue(e.target.value)}} />
+        </div>
       </Codebox>
 
       <h1>API</h1>
