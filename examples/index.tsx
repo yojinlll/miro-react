@@ -12,7 +12,12 @@ import InputExample from "./input";
 import TreeExample from "./tree";
 import './logo.svg'
 
-const Nav: React.FC<{jumpHandle: React.Dispatch<React.SetStateAction<Boolean>>}> = (props) => {
+interface NavProps {
+  jumpHandle: React.Dispatch<React.SetStateAction<Boolean>>
+  className?: string
+}
+
+const Nav: React.FC<NavProps> = (props) => {
   const location = useLocation()
   
   useEffect(() => {
@@ -20,7 +25,7 @@ const Nav: React.FC<{jumpHandle: React.Dispatch<React.SetStateAction<Boolean>>}>
   }, [location])
 
   return (
-    <ul>
+    <ul className={props.className}>
       <li>
         <NavLink to="/home">Home</NavLink>
       </li>
@@ -71,7 +76,7 @@ const Page: React.FC = () => {
           </Header>
           <Layout>
             <Aside className={'site-aside'}>
-              <Nav jumpHandle={setNavToggle} />
+              <Nav jumpHandle={setNavToggle} className='is-pc' />
             </Aside>
 
             <Content className={'site-content'}>

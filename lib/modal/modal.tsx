@@ -1,3 +1,4 @@
+import Button from '@lib/button/button';
 import React, { useEffect, Fragment } from "react";
 import ReactDOM from "react-dom";
 import classNameHandler from "../utils/classes";
@@ -15,9 +16,12 @@ interface ModalProps {
   customized?: React.ReactNode;
   style?: React.CSSProperties
   className?: string
+  confirmText?: string
+  cancelText?: string
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
+  const { confirmText, cancelText } = props
   const onConfirm: React.MouseEventHandler = (e) => {
     props.onConfirm && props.onConfirm(e);
   };
@@ -37,8 +41,8 @@ const Modal: React.FC<ModalProps> = (props) => {
       <header className={ch("header")}>{props.title}</header>
       <main className={ch("main")}>{props.children}</main>
       <footer className={ch("footer")}>
-        <button onClick={onConfirm}>ok</button>
-        <button onClick={onCancel}>cancel</button>
+        <Button onClick={onConfirm}>{confirmText || '确认'}</Button>
+        <Button onClick={onCancel}>{cancelText || '取消'}</Button>
       </footer>
     </Fragment>
   );
@@ -54,7 +58,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 };
 
 Modal.defaultProps = {
-  mask: true,
+  mask: false,
   maskClosable: false,
 };
 

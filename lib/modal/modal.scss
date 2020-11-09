@@ -44,6 +44,10 @@ $shadow: 0 3px 6px 0 rgba(0, 0, 0, 0), 0 6px 16px 0 rgba(0,0,0,.2), 0 9px 28px 8
     border-top: 1px solid $line;
     display: flex;
     justify-content: flex-end;
+
+    .miro-button:first-child{
+      margin-right: 12px;
+    }
   }
 
   &-close{

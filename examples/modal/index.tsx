@@ -1,16 +1,16 @@
 import React, { Fragment, useState } from "react";
-import { Modal } from "@lib/index";
+import { Modal, Button } from "@lib/index";
 import Codebox from "../utils/codebox/index"
 
 import ME1 from "./codeExamples/modal.1"
 
 const ModalExample: React.FC = () => {
   const [x, setX] = useState(false);
-  // const [y, setY] = useState(false);
+  const [y, setY] = useState(false);
   // const [z, setZ] = useState(false);
-  const xcloseModal = (e: any) => {
-    setX(false);
-  };
+  // const closeModal = (e: any) => {
+  //   setX(false);
+  // };
   // const ycloseModal = (e: any) => {
   //   setY(false);
   // };
@@ -20,61 +20,60 @@ const ModalExample: React.FC = () => {
 
   return (
     <Fragment>
+      <h1>Modal</h1>
+
       <Codebox
         codeString={ME1}
         header={
           <Fragment>
-            <h1>Live demo</h1>
-            <p>{'A modal with header, body, and set of actions in the footer. Use <Modal/> in combination with other components to show or hide your Modal. The <Modal/> Component comes with a few convenient "sub components": <Modal.Header/>, <Modal.Title/>, <Modal.Body/>, and <Modal.Footer/>, which you can use to build the Modal content.'}</p>
+            <p>基本使用。可设置 title，可设置遮罩层，可点击遮罩层关闭。</p>
           </Fragment>
         }
       >
-        <button onClick={() => setX(!x)}>button x</button>
+        <Button onClick={() => setX(!x)}>button x</Button>
         <Modal
           visible={x}
-          onCancel={xcloseModal}
-          title={"title x"}
-          mask={false}
+          onCancel={()=>{ setX(false); }}
+          onConfirm={()=>{ alert('OK!') }}
+          title={"Modal X"}
+          mask
+          maskClosable
           className={'m-modal'}
         >
           <div>test</div>
         </Modal>
       </Codebox>
 
-      {/* <h1>example 2</h1>
-      <div>
-        <button onClick={() => setY(!y)}>button y</button>
+      <Codebox
+        codeString={ME1}
+        header={
+          <Fragment>
+            <p>自定义 Modal</p>
+          </Fragment>
+        }
+      >
+        <Button onClick={() => setY(!y)}>button z</Button>
         <Modal
           visible={y}
-          title={"title y"}
-          onCancel={ycloseModal}
-          maskClosable={true}
-        >
-          <div>test</div>
-        </Modal>
-      </div>
-
-      <h1>example 3</h1>
-      <div>
-        <button onClick={() => setZ(!z)}>button z</button>
-        <Modal
-          visible={z}
+          style={{ border: "4px solid #f07171", background: "#d1d1fb" }}
           customized={
             <Fragment>
-              <h1>title z</h1>
-              <button onClick={zcloseModal}>ok</button>
-              <button onClick={zcloseModal}>cancel</button>
+              <div style={{ padding: 20 }}>
+                <h1>Modal Y</h1>
+                <p>自定义内容</p>
+                <Button onClick={()=>{ alert('OK!') }}>ok</Button>
+                <Button onClick={()=>{ setY(false) }}>cancel</Button>
+              </div>
             </Fragment>
           }
-          style={{ border: "4px solid #f07171", background: "#d1d1fb" }}
-        />
-      </div> */}
+        >hi</Modal>
+      </Codebox>
 
       <h1>API</h1>
       <div className="api-wrap">
         <table className="api-table">
           <thead>
-            <tr>
+            <tr>	
               <th>参数</th>
               <th>说明</th>
               <th>类型</th>
@@ -83,22 +82,70 @@ const ModalExample: React.FC = () => {
           </thead>
           <tbody>
             <tr>
-              <td>closeLabel</td>
-              <td>string</td>
-              <td>'Close alert'	</td>
-              <td>Renders a properly aligned dismiss button, as well as adding extra horizontal padding to the Alert.</td>
+              <td>visible</td>
+              <td>对话框是否可见，自行设置</td>
+              <td>Boolean</td>
+              <td>-</td>
             </tr>
             <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
+              <td>title</td>
+              <td>对话框默认样式的标题</td>
+              <td>String | Number</td>
+              <td>-</td>
             </tr>
             <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
+              <td>mask</td>
+              <td>设置遮罩层</td>
+              <td>Boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>maskClosable</td>
+              <td>设置点击遮罩层关闭对话框</td>
+              <td>Boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>maskClosable</td>
+              <td>设置点击遮罩层关闭对话框</td>
+              <td>Boolean</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>customized</td>
+              <td>自定义对话框</td>
+              <td>React.ReactFragment	</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>confirmText</td>
+              <td>设置确认按钮文本</td>
+              <td>String</td>
+              <td>确认</td>
+            </tr>
+            <tr>
+              <td>cancelText</td>
+              <td>设置取消按钮文本</td>
+              <td>String</td>
+              <td>取消</td>
+            </tr>
+            <tr>
+              <td>onConfirm</td>
+              <td>点击确认按钮时的回调</td>
+              <td>React.MouseEventHandler</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>onCancel</td>
+              <td>点击取消按钮时的回调</td>
+              <td>React.MouseEventHandler</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>className</td>
+              <td>自定义类名</td>
+              <td>String</td>
+              <td>-</td>
             </tr>
           </tbody>
         </table>
