@@ -6,17 +6,16 @@ interface TreeDataItem {
 interface TreeProps {
   className?: string;
   treeData: TreeDataItem[];
-  selected?: string[];
+  selected: string[];
   multiple?: boolean;
   checkable?: boolean;
   expanded?: boolean;
+  onChange: React.Dispatch<React.SetStateAction<string[] | string>>
 }
 interface TreeItemProps {
   treeProps: TreeProps;
 
   item: TreeDataItem;
   level: number;
-  selected: string[];
-  setSelect: React.Dispatch<React.SetStateAction<string[]>>;
   onItemChange: (i:any)=>void
 }
