@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button 存在 1`] = `
+<button
+  className="miro-button"
+>
+  button
+</button>
+`;

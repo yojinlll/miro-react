@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`icon render 1`] = `
+exports[`icon 存在 1`] = `
 <svg
   className="miro-icon"
 >

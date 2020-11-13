@@ -4,7 +4,7 @@ import React from 'react'
 import Icon from '../icon'
 
 describe('icon', ()=>{
-  it('render', ()=>{
+  it('存在', ()=>{
     const json = renderer.create(<Icon name='github' />).toJSON()
     expect(json).toMatchSnapshot()
   })
