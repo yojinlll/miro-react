@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
-import { HashRouter as Router, Route, NavLink, useLocation, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, NavLink, useLocation, Redirect, Switch } from "react-router-dom";
 import "./index.scss"
 import { Layout, Header, Content, Aside, Icon } from "@lib/index";
 import Guide from "./guide";
@@ -85,15 +85,17 @@ const Page: React.FC = () => {
                 <Nav jumpHandle={setNavToggle} />
               </div>
               <div className={'site-content-inner'}>
-                <Redirect from="/" to="/guide" />
-                <Route path="/guide" component={Guide} />
-                <Route path="/button" component={ButtonExample} />
-                <Route path="/icon" component={IconExample} />
-                <Route path="/modal" component={ModalExample} />
-                <Route path="/layout" component={LayoutExample} />
-                <Route path="/input" component={InputExample} />
-                <Route path="/form" component={FormExample} />
-                <Route path="/tree" component={TreeExample} />
+                <Switch>
+                  <Redirect exact from="/" to="/guide" />
+                  <Route path="/guide" component={Guide} />
+                  <Route path="/button" component={ButtonExample} />
+                  <Route path="/icon" component={IconExample} />
+                  <Route path="/modal" component={ModalExample} />
+                  <Route path="/layout" component={LayoutExample} />
+                  <Route path="/input" component={InputExample} />
+                  <Route path="/form" component={FormExample} />
+                  <Route path="/tree" component={TreeExample} />
+                </Switch>
               </div>
             </Content>
           </Layout>
