@@ -12,7 +12,7 @@ const Guide:React.FC = () => {
   return (
     <div className="guide">
       <h1>快速上手</h1>
-      <p>一套 PC & Mobile 均适用的组件库，基于react hooks + typeScript 开发，无额外依赖。</p>
+      <p>一套 PC & Mobile 均适用的组件库，基于 React Hooks + TypeScript 开发，无额外依赖。</p>
 
       <h3>安装</h3>
       <div className="code-wrap">
