@@ -35,6 +35,7 @@ const InputExample:React.FC = () => {
       </Codebox>
 
       <h1>API</h1>
+      <p>{'继承 <input> 属性'}</p>
       <div className="api-wrap">
         <table className="api-table">
           <thead>
