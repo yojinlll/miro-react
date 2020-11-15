@@ -1,4 +1,4 @@
-import Button from '@lib/button/button';
+import Button from '../button/button';
 import React, { useEffect, Fragment } from "react";
 import ReactDOM from "react-dom";
 import classNameHandler from "../utils/classes";
